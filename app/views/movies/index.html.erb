@@ -1,61 +1,60 @@
 <html>
-    <style>
-        table, th, td {
-        border:1px solid black;
-        }
-    </style>
-    <body>
-        <h1> Overview of all movies </h1>
-        <br>
-        <%= form_tag "/movies", method: "GET" do %>
-        <span style="color:green; font-size:15px;">  to display only movies of your actor </span>
-        <br>
-        <%= label_tag :search_by_actor %>
-        <%= text_field_tag :search_by_actor, params[:search_by_actor] %>
-        <%= submit_tag "Search" %>
-        <% end %>
-        <br>
-        <span style="color:green; font-size:15px;">  sort movies by average stars (sum of all stars / total num of reviews)</span>
-        <br>
-        <%= link_to "ascending order", :sort => "asd"%>
-        <br>
-        <%= link_to "descending order", :sort => "des"%>
-        <br>
-        <% if @movies.empty? %>
-        <p style="color:red; font-size:15px;">  No movies found </p>
-        <% else %>
-                <table>
-                <thead>
-                    <tr>
-                    <th>name</th>
-                    <th>description</th>
-                    <th>Actors</th>
-                    <th>year</th>
-                    <th>director</th>
-                    <th>filming_location</th>
-                    <th>country</th>
-                     <th>Avg Starts</th>
-                    <th colspan="3"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @movies.each do |movie| %>
-                    <tr>
-                        <td><%= movie.name %></td>
-                        <td><%= movie.description %></td>
-                        <td><%= movie.actors.pluck(:name) %></td>
-                        <td><%= movie.year %></td>
-                        <td><%= movie.director %></td>
-                        <td><%= movie.filming_location %></td>
-                        <td><%= movie.country %></td>
-                        <td><%= movie.avg_stars %></td>
-
-                    </tr>
-                    <% end %>
-                </tbody>
-                </table>
-        <%end%>
-        <br>
-    </body>
+  <style>
+    table, th, td {
+    border:1px solid black;
+    }
+  </style>
+  <body>
+    <h1> Overview of all movies </h1>
+    <br>
+    <%= form_tag "/movies", method: "GET" do %>
+    <span style="color:green; font-size:15px;">  to display only movies of your actor </span>
+    <br>
+    <%= label_tag :search_by_actor %>
+    <%= text_field_tag :search_by_actor, params[:search_by_actor] %>
+    <%= submit_tag "Search" %>
+    <% end %>
+    <br>
+    <span style="color:green; font-size:15px;">  sort movies by average stars (sum of all stars / total num of reviews)</span>
+    <br>
+    <%= link_to "ascending order", :sort => "asd"%>
+    <br>
+    <%= link_to "descending order", :sort => "des"%>
+    <br>
+    <% if @movies.empty? %>
+    <p style="color:red; font-size:15px;">  No movies found </p>
+    <% else %>
+      <table>
+        <thead>
+            <tr>
+            <th>name</th>
+            <th>description</th>
+            <th>Actors</th>
+            <th>year</th>
+            <th>director</th>
+            <th>filming_location</th>
+            <th>country</th>
+              <th>Avg Starts</th>
+            <th colspan="3"></th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @movies.each do |movie| %>
+          <tr>
+            <td><%= movie.name %></td>
+            <td><%= movie.description %></td>
+            <td><%= movie.actors.pluck(:name) %></td>
+            <td><%= movie.year %></td>
+            <td><%= movie.director %></td>
+            <td><%= movie.filming_location %></td>
+            <td><%= movie.country %></td>
+            <td><%= movie.avg_stars %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <%end%>
+    <br>
+  </body>
 </html>
 
