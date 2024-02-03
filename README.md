@@ -1,24 +1,22 @@
-# README
+# movies_reviews
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### steps to run "movies_reviews" locally
 
-Things you may want to cover:
+- ###### you only have to clone this repository ::
 
-* Ruby version
+        $ git clone https://github.com/Raanaa/movies_reviews.git
 
-* System dependencies
+- ##### in your project directory run ::
 
-* Configuration
+       $ bundle install
 
-* Database creation
+       $ rake db:migrate
 
-* Database initialization
+##### to import csv data to your database directly just run ::
 
-* How to run the test suite
+      $ rake import_csv
 
-* Services (job queues, cache servers, search engines, etc.)
+- ##### to run your local server ::
 
-* Deployment instructions
-
-* ...
+       $ rails s
+       open a browser window and navigate to [ http://localhost:3000/movies ]
